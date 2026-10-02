@@ -1,4 +1,3 @@
-
 // Core Module
 const path = require("path");
 
@@ -39,9 +38,7 @@ const randomString = (length) => {
   let result = "";
 
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
 
   return result;
@@ -91,7 +88,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store,
-  })
+  }),
 );
 
 app.use((req, res, next) => {
@@ -117,7 +114,7 @@ app.use("/host", hostRouter);
 
 app.use(errorsController.pageNotFound);
 
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 mongoose
   .connect(DB_PATH, {
